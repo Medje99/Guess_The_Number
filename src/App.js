@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Main from './components/Main.jsx';
+import Rules from './pages/Rules.jsx';
+import { NumberProvider } from './context/NumberContext.js';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NumberProvider>
+      <Router>
+              <Routes>
+                <Route path='/' element={<Main/>}/>
+                <Route path='/rules' element={<Rules />} />
+              </Routes>
+      </Router>
+    </NumberProvider>
   );
 }
 
