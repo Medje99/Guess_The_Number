@@ -129,19 +129,31 @@ export const NumberProvider = ({children}) => {
             inputValue: ''
           }));
 
+
           setIsWrong(true)
         }
+
+     
+
 
         setDisplayAndButtons(false,false,true)
         setStars()
     }
 
+   const removeZero = () => {
+    // eslint-disable-next-line no-restricted-globals
+    if ((event.keyCode === 8 || event.key === 'Backspace') && (initialValue.inputValue === 0)) {
+      setInitialValue(prevState => ({
+        ...prevState,
+        inputValue: ''
+      }));
+    }
+  }
 
     useEffect(() => {   
         setStars()
       }, [initialValue.digitsNum]);
       
-
 
 
       
@@ -162,7 +174,8 @@ export const NumberProvider = ({children}) => {
         currentScore,
         highScore,
         isCorrect,
-        isWrong
+        isWrong,
+        removeZero
     }}>
     
     {children}

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import NumberContext from '../context/NumberContext'
 
 function Game() {
-      const {getNumber,guessNumber,initialValue,setInitialValue, display,getNumBtn,guessNumBtn,inputNumber} = useContext(NumberContext)
+      const {getNumber,guessNumber,initialValue,setInitialValue, display,getNumBtn,guessNumBtn,inputNumber,removeZero} = useContext(NumberContext)
     
       const style = {
         display: display ? 'none' : 'block',
@@ -23,7 +23,9 @@ function Game() {
                   <input type="number" value={initialValue.inputValue} ref={inputNumber} onChange={(e) => setInitialValue((prevState) => ({
                         ...prevState,
                         inputValue: +e.target.value,
-                  }))} />
+                  }))} 
+                  onKeyDown={removeZero}
+                  />
                   <button type="submit" className='btn__two' onClick={guessNumber} disabled={guessNumBtn} >Guess Number</button>
 
 
